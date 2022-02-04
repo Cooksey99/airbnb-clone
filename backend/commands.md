@@ -12,4 +12,8 @@ Creating database:
 
 Database tables and seeds:
     npx sequelize model:generate --name User --attributes username:string,email:string,hashedPassword:string
+    npx dotenv sequelize db:migrate
+    npx sequelize seed:generate --name demo-user
+
+    npx dotenv sequelize db:seed:all
 
