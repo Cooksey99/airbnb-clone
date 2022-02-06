@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "sequelize": "sequelize",
     "sequelize-cli": "sequelize-cli",
     "start": "per-env",
@@ -17,7 +16,6 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
-    "cookieparser": "^0.1.0",
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
     "dotenv": "^16.0.0",
@@ -29,6 +27,7 @@
     "morgan": "^1.10.0",
     "per-env": "^1.0.2",
     "pg": "^8.7.1",
+    "sequelize": "^5.22.5",
     "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {

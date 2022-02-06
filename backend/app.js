@@ -1,50 +1,44 @@
-const express = require('express');
-const morgan = require('morgan');
+const express = require('express')
+const morgan = require('morgan')
 const cors = require('cors');
 const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
-const routes = require('./routes');
-const { ValidationError } = require('sequelize');
+const routes = require('./routes')
 
-const { enviroment } = require('./config');
-const isProduction = enviroment === 'production';
+const { environment } = require('./config');
+const { ValidationError } = require('sequelize')
+const isProduction = environment === 'production';
 
-// initialize Express app
-const app = express();
-// connect morgan for loggins information
-app.use(morgan('dev'));
-app.use(cookieParser());
-app.use(express.json());
-// connect all routes
+const app = express()
+
+app.use(morgan('dev'))
+app.use(cookieParser())
+app.use(express.json())
 
 if (!isProduction) {
-    // enable cors only in development
-    app.use(cors());
+
+    app.use(cors())
 }
 
-// helmet helps set a variety of headers to better secure your app
 app.use(
-    helmet.crossOriginEmbedderPolicy({
+    helmet.crossOriginResourcePolicy({
         policy: 'cross-origin'
     })
-    );
+)
 
-    // set _csrf token and create req.csrfToken method
-    app.use(
-        csurf({
-            cookie: {
-                secure: isProduction,
-                sameSite: isProduction && "Lax",
-                // make token only http, therefore, unreadable by JavaScript
-                httpOnly: true
-            }
-        })
-        );
+app.use(
+    csurf({
+        cookie: {
+            secure: isProduction,
+            sameSite: isProduction && "Lax",
+            httpOnly: true
+        }
+    })
+)
 
-app.use(routes);
+app.use(routes)
 
-// error handling routes
 app.use((_req, _res, next) => {
     const err = new Error("The requested resource couldn't be found.");
     err.title = "Resource Not Found";
@@ -53,18 +47,16 @@ app.use((_req, _res, next) => {
     next(err);
   });
 
-// sequelize error handling
-app.use((err, _req, _res, next) => {
-  // check if error is a Sequelize error:
-  if (err instanceof ValidationError) {
-    err.errors = err.errors.map((e) => e.message);
-    err.title = 'Validation error';
-  }
-  next(err);
-});
+  app.use((err, _req, _res, next) => {
 
-// error formatter
-app.use((err, _req, res, _next) => {
+    if (err instanceof ValidationError) {
+        err.errors = err.errors.map((e) => e.message);
+        err.title = 'Validation error';
+    }
+    next(err);
+  })
+
+  app.use((err, _req, res, _next) => {
     res.status(err.status || 500);
     console.error(err);
     res.json({
@@ -75,4 +67,5 @@ app.use((err, _req, res, _next) => {
     });
   });
 
-        module.exports = app;
+
+module.exports = app;
