@@ -1,11 +1,9 @@
-// frontend/src/store/session.js
-import { csrfFetch } from "./csrf";
+import { csrfFetch } from './csrf';
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 
 const setUser = (user) => {
-    // SET_USER will be equal to the user variable
     return {
         type: SET_USER,
         payload: user,
@@ -24,11 +22,41 @@ export const login = (user) => async (dispatch) => {
         method: 'POST',
         body: JSON.stringify({
             credential,
-            password
-        })
+            password,
+        }),
     });
     const data = await response.json();
     dispatch(setUser(data.user));
+    return response;
+};
+
+export const restoreUser = () => async dispatch => {
+    const response = await csrfFetch('/api/session');
+    const data = await response.json();
+    dispatch(setUser(data.user));
+    return response;
+};
+
+export const signup = (user) => async (dispatch) => {
+    const { username, email, password } = user;
+    const response = await csrfFetch("/api/users", {
+        method: "POST",
+        body: JSON.stringify({
+            username,
+            email,
+            password,
+        }),
+    });
+    const data = await response.json();
+    dispatch(setUser(data.user));
+    return response;
+};
+
+export const logout = () => async (dispatch) => {
+    const response = await csrfFetch('/api/session', {
+        method: 'DELETE',
+    });
+    dispatch(removeUser());
     return response;
 };
 
