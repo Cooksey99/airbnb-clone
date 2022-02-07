@@ -81,9 +81,9 @@ function SignupFormPage() {
       <button
       id="signup-button"
       type="submit">Continue</button>
-      <p
+      <button
       onClick={demoUser}
-      className="demo-user">Demo User</p>
+      id="demo-user">Demo User</button>
     </form >
   );
 }

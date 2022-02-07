@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
 }
-#signup-form input, #signup-form button{
+#signup-form input, #signup-form button {
     height: 4em;
     width: 26em;
     border-radius: .5em;
@@ -12,3 +12,4 @@
 #signup-form button {
     margin-top: 3em;
 }
+
