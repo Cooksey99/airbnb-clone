@@ -3,10 +3,18 @@
     height: 4em;
     margin: 0;
 }
-#nav-right {
+#button-container {
     float: right;
     height: 3.5em;
     width: 6em;
     border-radius: 2em;
     border: 1px black solid;
+    background: grey;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+#profile-button {
+    background: pink;
+    width: 100%;
 }
