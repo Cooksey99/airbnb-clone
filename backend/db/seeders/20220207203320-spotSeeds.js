@@ -9,6 +9,7 @@ module.exports = {
       Example:
       */
    return queryInterface.bulkInsert('Spots', [{
+     userId: 1,
      guestCount: 2,
      staySize: '2 bedrooms',
      roomCount: 2,
