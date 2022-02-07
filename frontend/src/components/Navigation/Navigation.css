@@ -1,0 +1,12 @@
+#nav-bar {
+    background: coral;
+    height: 4em;
+    margin: 0;
+}
+#nav-right {
+    float: right;
+    height: 3.5em;
+    width: 6em;
+    border-radius: 2em;
+    border: 1px black solid;
+}

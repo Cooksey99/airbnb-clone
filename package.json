@@ -14,13 +14,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DaneBex/React-Redux-Project.git"
+    "url": "git+https://github.com/Cooksey99/airbnb-clone"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DaneBex/React-Redux-Project/issues"
+    "url": "https://github.com/Cooksey99/airbnb-clone/issues"
   },
-  "homepage": "https://github.com/DaneBex/React-Redux-Project#readme"
+  "homepage": "https://github.com/Cooksey99/airbnb-clone#readme"
 }

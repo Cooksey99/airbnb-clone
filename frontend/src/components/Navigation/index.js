@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
+import LoginFormModal from '../LoginForm';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -21,21 +21,25 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink id='sign-up-button' to="/signup">Sign Up</NavLink>
+        <NavLink id='signup-button' to="/signup">Sign Up</NavLink>
       </>
     );
   }
+  // if true, show login tools
+  let showLogin = false;
 
   return (
       <div id='nav-bar'>
       <div
       onClick={goHome}
        id='nav-logo'></div>
-    <ul id='nav-buttons'>
-      <li>
+    <button id='nav-right'
+    onClick={!showLogin}
+    >
+      <div>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+      </div>
+    </button>
     </div>
   );
 }
