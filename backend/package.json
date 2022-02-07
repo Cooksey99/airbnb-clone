@@ -4,13 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "npm run build --prefix frontend",
-    "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
-    "dev:backend": "npm install --prefix backend start",
-    "dev:frontend": "npm install --prefix frontend start",
-    "sequelize": "npm run --prefix backend sequelize",
-    "sequelize-cli": "npm run --prefix backend sequelize-cli",
-    "start": "npm start --prefix backend"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sequelize": "sequelize",
+    "sequelize-cli": "sequelize-cli",
+    "start": "per-env",
+    "start:development": "nodemon -r dotenv/config ./bin/www",
+    "start:production": "node ./bin/www"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +17,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
+    "cookieparser": "^0.1.0",
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
     "dotenv": "^16.0.0",
@@ -29,7 +29,6 @@
     "morgan": "^1.10.0",
     "per-env": "^1.0.2",
     "pg": "^8.7.1",
-    "sequelize": "^5.22.5",
     "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
