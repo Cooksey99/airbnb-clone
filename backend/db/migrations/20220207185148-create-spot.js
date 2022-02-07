@@ -8,17 +8,20 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      userId: {
+        type: Sequelize.INTEGER
+      },
       guestCount: {
-        type: Sequelize.INTEGER(100)
+        type: Sequelize.INTEGER
       },
       staySize: {
         type: Sequelize.STRING(30)
       },
       roomCount: {
-        type: Sequelize.INTEGER(15)
+        type: Sequelize.INTEGER
       },
       bathCount: {
-        type: Sequelize.INTEGER(15)
+        type: Sequelize.INTEGER
       },
       description: {
         type: Sequelize.STRING(2000)
