@@ -9,19 +9,19 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       guestCount: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(100)
       },
       staySize: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(30)
       },
       roomCount: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(15)
       },
       bathCount: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER(15)
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(2000)
       },
       createdAt: {
         allowNull: false,
