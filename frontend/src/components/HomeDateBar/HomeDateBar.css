@@ -1,0 +1,18 @@
+#date-bar {
+    /* centering */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    /* sizing */
+    height: 4em;
+    width: 65%;
+    /* styling */
+    background: pink;
+    border-radius: 4em;
+}
+#date-bar div {
+    display: flex;
+    flex-direction: column;
+}
