@@ -39,11 +39,9 @@ function SignupFormPage() {
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <div className="divider">
-      <label>
-        Email
-        </label>
         <input className="input-bar"
           type="text"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -51,11 +49,9 @@ function SignupFormPage() {
 
       </div>
       <div className="divider">
-      <label>
-        Username
-        </label>
         <input className="input-bar"
           type="text"
+          placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
@@ -63,11 +59,9 @@ function SignupFormPage() {
 
       </div>
       <div className="divider">
-      <label>
-        Password
-         </label>
         <input className="input-bar"
           type="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -75,11 +69,9 @@ function SignupFormPage() {
 
       </div>
       <div className="divider">
-      <label>
-        Confirm Password
-         </label>
         <input className="input-bar"
           type="password"
+          placeholder="Confirm Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
