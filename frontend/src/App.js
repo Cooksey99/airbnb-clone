@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginForm";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
+import SingleSpot from "./components/SingleSpot";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path='/spots/:id'>
+            <SingleSpot />
+          </Route>
           <Route path="/login">
             <LoginFormPage />
           </Route>

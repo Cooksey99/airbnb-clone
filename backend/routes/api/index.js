@@ -10,6 +10,6 @@ const router = require('express').Router()
 router.use('/session', sessionRouter)
 router.use('/users', usersRouter)
 
-
+router.get('/spots')
 
 module.exports = router
