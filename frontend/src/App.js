@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import SingleSpot from "./components/SingleSpot";
 import ListSpots from "./components/ListSpots";
+import CreateListing from "./components/CreateListing";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path='/spots/create'>
+            <CreateListing />
+          </Route>
           <Route exact path='/spots/:id'>
             <SingleSpot />
           </Route>

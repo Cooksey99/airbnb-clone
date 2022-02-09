@@ -44,9 +44,8 @@ const sortList = (list) => {
     return list.sort((a, b) => a - b).map(spot => spot.id)
 }
 
-export default function spotsReducer(state = {}, action, spotId) {
+export default function spotsReducer(state = {}, action) {
     let newState;
-    // console.log('spotId:   ' + action.payload.forEach(spot => newState[spot.id] = spot))
 
     switch (action.type) {
         case SET_SPOTS:
@@ -57,26 +56,6 @@ export default function spotsReducer(state = {}, action, spotId) {
             newState = {...state};
             newState[action.spot.id] = action.spot;
             return newState;
-
-            // if (!state[action.spots.id]) {
-            //     const newState = {
-            //         ...state,
-            //         [action.spot.id]: action.spot
-            //     }
-            //     const spotList = newState.list.map(id => newState[id]);
-            //     spotList.push(action.spots);
-            //     newState.list = sortList(spotList);
-            //     return newState;
-            // }
-            // return {
-            //     ...state,
-            //     [action.spots.id]: {
-            //         ...state[action.spots.id],
-            //         ...action.spots
-            //     }
-            // }
-
-            // return newState;
         default:
             return state;
     }
