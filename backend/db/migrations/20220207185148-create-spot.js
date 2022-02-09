@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false
       },
       title: {
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING(80),
         allowNull: false
       },
       guestCount: {
@@ -21,7 +21,7 @@ module.exports = {
         allowNull: false
       },
       staySize: {
-        type: Sequelize.STRING(30),
+        type: Sequelize.INTEGER,
         allowNull: false
       },
       roomCount: {
