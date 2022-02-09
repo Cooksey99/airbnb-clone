@@ -1,7 +1,38 @@
 import React, { useState } from "react";
 import './HomeDateBar.css'
+import { DateRangePicker } from 'react-date-range';
+import 'react-date-range/dist/styles.css'
+import 'react-date-range/dist/theme/default.css'
 
 export default function HomeDateBar() {
+
+    function DatePicker() {
+        const [startDate, setStartDate] = useState(new Date());
+        const [endDate, setEndDate] = useState(new Date());
+
+        const selectionRange = {
+            startDate: startDate,
+            endDate: endDate,
+            key: 'selection'
+        };
+
+        function handleSelect(ranges) {
+            setStartDate(ranges.selection.startDate);
+            setEndDate(ranges.selection.endDate);
+        }
+        return (
+            <div id="date-picker">
+                <DateRangePicker ranges={
+                    [selectionRange]
+                } onChange={handleSelect}/>
+            </div>
+        )
+    }
+
+    const [dateButton, setDateButton] = useState(false)
+    const buttonClick = () => {
+        return setDateButton(!dateButton);
+    }
 
     return (
         <>
@@ -11,14 +42,18 @@ export default function HomeDateBar() {
                     <input className="location"></input>
                 </div>
                 <div>
-                    <label>Check in</label>
-                    <input type='date'
-                    className="check-in"></input>
+                    <button className="date-button"
+                    onClick={buttonClick}>
+                        <p>Check in</p>
+                        <p>Add dates</p>
+                    </button>
                 </div>
                 <div>
-                    <label>Check out</label>
-                    <input type='date'
-                    className="check-out"></input>
+                    <button className="date-button"
+                    onClick={buttonClick}>
+                        <p>Check out</p>
+                        <p>Add dates</p>
+                    </button>
                 </div>
                 <div>
                     <label>Guests</label>
@@ -36,6 +71,7 @@ export default function HomeDateBar() {
                     </select>
                 </div>
             </section>
+            {dateButton && <DatePicker />}
         </>
     )
 }
