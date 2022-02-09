@@ -2,10 +2,12 @@
 module.exports = (sequelize, DataTypes) => {
   const Spot = sequelize.define('Spot', {
     userId: DataTypes.INTEGER,
+    title: DataTypes.STRING,
     guestCount: DataTypes.INTEGER,
     staySize: DataTypes.STRING,
     roomCount: DataTypes.INTEGER,
     bathCount: DataTypes.INTEGER,
+    nightlyCost: DataTypes.INTEGER,
     description: DataTypes.STRING
   }, {});
   Spot.associate = function(models) {

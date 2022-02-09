@@ -8,9 +8,68 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkInsert('Amentities', [{
-
-   }], {});
+    return queryInterface.bulkInsert('Amentities', [
+      {
+        spotsId: null,
+        amentityName: 'Wifi',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        spotsId: null,
+        amentityName: 'TV',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        spotsId: null,
+        amentityName: 'Free parking on premises',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        spotsId: null,
+        amentityName: 'Air conditioning',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        spotsId: null,
+        amentityName: 'Private patio or balcony',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        spotsId: null,
+        amentityName: 'Private hot tub',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        spotsId: null,
+        amentityName: 'Security cameras on property',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        spotsId: null,
+        amentityName: 'Bathtub',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        spotsId: null,
+        amentityName: 'Backyard',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      {
+        spotsId: null,
+        amentityName: 'Garden view',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -20,6 +79,6 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkDelete('Amentities', null, {});
+    return queryInterface.bulkDelete('Amentities', null, {});
   }
 };
