@@ -8,18 +8,20 @@ export default function SingleSpot() {
     const { id } = useParams();
     const dispatch = useDispatch();
 
-    const spotsObj = useSelector(state => state.spots);
-    const spot = Object.values(spotsObj);
+    const oneSpot = useSelector(state => state.spots[id])
+    
+    console.log(oneSpot);
 
     useEffect(() => {
         dispatch(findSpot(id));
     }, [dispatch])
 
-    console.log(spot);
+    if (!oneSpot) return '...loading'
     return (
         <div className="test">
             <h1>
                 Spot ID = { id }
+                Spot title = { oneSpot.title }
             </h1>
             {}
         </div>

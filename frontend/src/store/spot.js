@@ -15,22 +15,19 @@ const setSpots = (spots) => {
     }
 }
 
-const locateSpot = (spot, spotId) => {
+const locateSpot = (spot) => {
     return {
         type: FIND_SPOT,
-        payload: spot,
-        spotId
+        spot
     }
 }
 
 export const findSpot = (spotId) => async (dispatch) => {
-    const response = await csrfFetch('/api/spots');
+    const response = await csrfFetch(`/api/spots/${spotId}`);
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(locateSpot(data, spotId))
-
-        return response;
+        dispatch(locateSpot(data))
     }
 
 }
@@ -43,8 +40,13 @@ export const getSpots = () => async (dispatch) => {
     return response;
 };
 
+const sortList = (list) => {
+    return list.sort((a, b) => a - b).map(spot => spot.id)
+}
+
 export default function spotsReducer(state = {}, action, spotId) {
     let newState;
+    // console.log('spotId:   ' + action.payload.forEach(spot => newState[spot.id] = spot))
 
     switch (action.type) {
         case SET_SPOTS:
@@ -52,9 +54,29 @@ export default function spotsReducer(state = {}, action, spotId) {
             action.payload.forEach(spot => newState[spot.id] = spot);
             return newState;
         case FIND_SPOT:
-            newState = {};
-            newState = action.payload.filter(spot => spot.id === spotId);
+            newState = {...state};
+            newState[action.spot.id] = action.spot;
             return newState;
+
+            // if (!state[action.spots.id]) {
+            //     const newState = {
+            //         ...state,
+            //         [action.spot.id]: action.spot
+            //     }
+            //     const spotList = newState.list.map(id => newState[id]);
+            //     spotList.push(action.spots);
+            //     newState.list = sortList(spotList);
+            //     return newState;
+            // }
+            // return {
+            //     ...state,
+            //     [action.spots.id]: {
+            //         ...state[action.spots.id],
+            //         ...action.spots
+            //     }
+            // }
+
+            // return newState;
         default:
             return state;
     }
