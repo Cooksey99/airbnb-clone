@@ -15,18 +15,25 @@ const setSpots = (spots) => {
     }
 }
 
-const findSpot = (spots) => {
+const locateSpot = (spot, spotId) => {
     return {
         type: FIND_SPOT,
-        payload: spots
+        payload: spot,
+        spotId
     }
 }
 
-// export const findSpot = (id) => async (dispatch) => {
-//     const response = await csrfFetch('/api/spots');
-//     const data = await response.json();
-//     await data.findByPk(id)
-// }
+export const findSpot = (spotId) => async (dispatch) => {
+    const response = await csrfFetch('/api/spots');
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(locateSpot(data, spotId))
+
+        return response;
+    }
+
+}
 
 export const getSpots = () => async (dispatch) => {
     const response = await csrfFetch('/api/spots');
@@ -36,13 +43,17 @@ export const getSpots = () => async (dispatch) => {
     return response;
 };
 
-export default function spotsReducer(state = {}, action) {
+export default function spotsReducer(state = {}, action, spotId) {
     let newState;
 
     switch (action.type) {
         case SET_SPOTS:
             newState = {};
             action.payload.forEach(spot => newState[spot.id] = spot);
+            return newState;
+        case FIND_SPOT:
+            newState = {};
+            newState = action.payload.filter(spot => spot.id === spotId);
             return newState;
         default:
             return state;
