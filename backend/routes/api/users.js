@@ -42,5 +42,11 @@ router.post(
     })
   );
 
+router.get('/', asyncHandler(async(req, res) => {
+  const { id } = req.body;
+  return res.json({
+    id
+  })
+}))
 
 module.exports = router;

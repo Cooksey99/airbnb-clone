@@ -12,7 +12,6 @@
     background: grey;
     display: flex;
     justify-content: center;
-    overflow: hidden;
 }
 #profile-button {
     background: pink;

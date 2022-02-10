@@ -16,6 +16,13 @@ export default function ListSpots() {
         dispatch(getSpots());
     }, [dispatch])
 
+    const pluralText = (number, word) => {
+        if (number > 1) {
+            word = word + 's'
+            return `${number} ${word}`;
+        } else return `${number} ${word}`
+    }
+
     return (
         <>
         <section id='cards-container'>
@@ -25,13 +32,13 @@ export default function ListSpots() {
                     <div className='card-info'>
                         <h3>{spot.title}</h3>
                         <ul id='stay-specifics'>
-                            <li>{spot.guestCount}</li>
-                            <li>{spot.staySize}</li>
-                            <li>{spot.roomCount}</li>
-                            <li>{spot.bathCount}</li>
+                            <p>{ `${pluralText(spot.guestCount, 'guest')}`}</p>
+                            <p>{ `${pluralText(spot.staySize, 'bedroom')}`}</p>
+                            <p>{ `${pluralText(spot.roomCount, 'bed')}`}</p>
+                            <p>{ `${pluralText(spot.bathCount, 'bath')}`}</p>
                         </ul>
                     </div>
-            <p>{`$${spot.nightlyCost}`}</p>
+            <p>{`$${spot.nightlyCost} / night`}</p>
             </NavLink>))}
         </section>
         </>
