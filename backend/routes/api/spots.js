@@ -59,12 +59,13 @@ router.get('/:spotId', asyncHandler(async(req, res) => {
 // creating a listing/spot
 router.post('/', spotValidator, restoreUser,
 asyncHandler(async(req, res) => {
+
     const spot = await Spot.create({...req.body, userId: req.user.id})
     res.json(spot);
 }))
 
 // edit /spot/:id
-router.put('/:id', restoreUser,
+router.put('/:id', spotValidator, restoreUser,
 asyncHandler(async(req, res) => {
     // const spot = await Spot.findByPk(req.params.id);
     // spot.update({ ...req.body, userId: req.user.id });
