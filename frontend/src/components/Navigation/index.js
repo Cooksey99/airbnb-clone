@@ -27,6 +27,8 @@ function Navigation({ isLoaded }){
   return (
     <nav id='nav-bar'>
       <NavLink exact to="/">Airunme</NavLink>
+      <NavLink exact to="/spots">Places to stay</NavLink>
+      <NavLink exact to="/spots/create">Host</NavLink>
       {isLoaded && sessionLinks}
     </nav>
   );
