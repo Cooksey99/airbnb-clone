@@ -106,26 +106,38 @@ export default function SingleSpot() {
                     <label>Title</label>
                     <input value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                    required
                     ></input>
                     <label>Guest quantity</label>
                     <input value={guestCount}
                     onChange={(e) => setGuestCount(e.target.value)}
+                    required
                     ></input>
                     <label>Size of spot</label>
                     <input value={staySize}
-                    onChange={(e) => setStaySize(e.target.value)}></input>
+                    onChange={(e) => setStaySize(e.target.value)}
+                    required
+                    ></input>
                     <label>Number of rooms</label>
                     <input value={roomCount}
-                    onChange={(e) => setRoomCount(e.target.value)}></input>
+                    onChange={(e) => setRoomCount(e.target.value)}
+                    required
+                    ></input>
                     <label>Number of bathrooms</label>
                     <input value={bathCount}
-                    onChange={(e) => setBathCount(e.target.value)}></input>
+                    onChange={(e) => setBathCount(e.target.value)}
+                    required
+                    ></input>
                     <label>Nightly cost</label>
                     <input value={nightlyCost}
-                    onChange={(e) => setNightlyCost(e.target.value)}></input>
+                    onChange={(e) => setNightlyCost(e.target.value)}
+                    required
+                    ></input>
                     <label>Tell us about your place!</label>
                     <textarea value={description}
-                    onChange={(e) => setDescription(e.target.value)}></textarea>
+                    onChange={(e) => setDescription(e.target.value)}
+                    required
+                    ></textarea>
                     <button>Submit Changes</button>
                 </form>
                 <button
