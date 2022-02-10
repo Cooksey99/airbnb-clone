@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import './SingleSpot.css'
-import { editListing } from "../../store/spot";
+import { editListing, deleteListing } from "../../store/spot";
 
 export default function SingleSpot() {
     const { id } = useParams();
@@ -46,8 +46,10 @@ export default function SingleSpot() {
         } else return `${number} ${word}`
     }
 
-    const deleteListing = (id) => {
-        return dispatch(deleteListing(id))
+    const removeListing = (id) => {
+        // console.log(id);
+        dispatch(deleteListing(id))
+        return history.push('/spots');
     }
 
     if (!oneSpot) return '...loading';
@@ -91,7 +93,7 @@ export default function SingleSpot() {
                     onClick={() => setEditPage(true)}
                     >Edit listing</button>
                     <button
-                    onClick={() => deleteListing(id)}
+                    onClick={() => removeListing(id)}
                     >Remove listing</button>
                 </>
             )}

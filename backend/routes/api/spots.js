@@ -2,6 +2,7 @@ const express = require('express');
 const { Spot } = require('../../db/models');
 const { SpotsImage } = require('../../db/models')
 const asyncHandler = require('express-async-handler');
+const { restoreUser } = require('../../utils/auth');
 
 const { check, validationResult } = require('express-validator');
 
@@ -38,6 +39,7 @@ const spotValidator = [
 
 // http://localhost:5000/api/spots - test route
 router.get('/', asyncHandler(async(req, res) => {
+
     const allSpots = await Spot.findAll();
     res.json(allSpots);
 }));
@@ -55,12 +57,30 @@ router.get('/:spotId', asyncHandler(async(req, res) => {
 }));
 
 // creating a listing/spot
-router.post('/create', spotValidator,
+router.post('/', spotValidator, restoreUser,
 asyncHandler(async(req, res) => {
-    const spot = await Spot.create(req.body)
+    const spot = await Spot.create({...req.body, userId: req.user.id})
     res.json(spot);
-
 }))
 
+// edit /spot/:id
+router.put('/:id', restoreUser,
+asyncHandler(async(req, res) => {
+    // const spot = await Spot.findByPk(req.params.id);
+    // spot.update({ ...req.body, userId: req.user.id });
+    // const spot = await Spot.update({...req.body, userId: req.user.id})
+    // res.json(spot);
+    const spotId = req.params.id;
+    const spot = await Spot.findByPk(spotId);
+    spot.set(req.body);
+    await spot.save();
+    res.json(spot)
+}))
+
+router.delete('/:id', asyncHandler(async (req, res) => {
+    const spotId = req.params.id;
+    const spot = await Spot.findByPk(spotId);
+    await spot.destroy();
+}))
 
 module.exports = router;
