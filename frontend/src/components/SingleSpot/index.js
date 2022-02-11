@@ -1,8 +1,9 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import './SingleSpot.css'
 import { editListing, deleteListing } from "../../store/spot";
+import { SetBooking } from "../Bookings/SetBooking";
 
 export default function SingleSpot() {
     const { id } = useParams();
@@ -12,16 +13,16 @@ export default function SingleSpot() {
     const [sameUser, setSameUser] = useState(false);
     const [editPage, setEditPage] = useState(false);
 
-
     const sessionUser = useSelector(state => state.session.user);
     // console.log('session user:      ' + sessionUser.id);
     // contains the entire spot object
     const oneSpot = useSelector(state => state.spots[id])
     // console.log('oneSpot:      ' + oneSpot.userId);
     // sets sameUser to true if the user owns the listing
+
     const checkUser = () => {
         if (oneSpot.userId === sessionUser.id) setSameUser(true);
-    }
+    };
 
     // data for editing the listing
     const [title, setTitle] = useState(oneSpot.title);
@@ -31,6 +32,7 @@ export default function SingleSpot() {
     const [bathCount, setBathCount] = useState(oneSpot.bathCount);
     const [nightlyCost, setNightlyCost] = useState(oneSpot.nightlyCost);
     const [description, setDescription] = useState(oneSpot.description);
+
 
     // const [deleteButton, setDeleteButton] = useState(false);
     useEffect(() => {
@@ -68,10 +70,10 @@ export default function SingleSpot() {
             description
         }
         // const id = oneSpot.id;
-        // console.log('id:        ' + id)
-        const listing = await dispatch(editListing(id, sessionUser.id));
-        // console.log('Listing:   ' + newListing)
-        return dispatchEvent(editListing(listingData, id))
+        // console.log('spotId:        ' + id)
+        // console.log('userId:   ' + sessionUser.id)
+        await dispatch(editListing(listingData, id));
+        // return dispatchEvent(editListing(listingData, id))
     }
 
     return (
@@ -98,6 +100,7 @@ export default function SingleSpot() {
                 </>
             )}
         </div>
+        <SetBooking />
         {editPage && (
             <div>
                 <h1>TEST THAT IT WORKS</h1>

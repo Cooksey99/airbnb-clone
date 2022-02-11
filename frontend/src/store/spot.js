@@ -8,7 +8,7 @@ export const ACTIONS = {
     DELETE_LISTING: 'spots/delete-listing'
 }
 
-const SET_SPOTS = 'spots/set-spots';
+const LIST_SPOTS = 'spots/set-spots';
 const FIND_SPOT = 'spots/find-spot';
 const CREATE_LISTING = 'spots/create-listing';
 const EDIT_LISTING = 'spots/edit-listing';
@@ -55,7 +55,7 @@ export const editListing = (inputInfo, id) => async (dispatch) => {
 
 const setSpots = (spots) => {
     return {
-        type: SET_SPOTS,
+        type: LIST_SPOTS,
         payload: spots
     }
 }
@@ -85,7 +85,7 @@ export const getSpots = () => async (dispatch) => {
     return response;
 };
 
-const deleteSpot = (spotId) => {
+const deleteSpot = (userId, spotId) => {
     return {
         type: DELETE_LISTING,
         spotId
@@ -105,7 +105,7 @@ export default function spotsReducer(state = {}, action) {
     let newState;
 
     switch (action.type) {
-        case SET_SPOTS:
+        case LIST_SPOTS:
             newState = {};
             action.payload.forEach(spot => newState[spot.id] = spot);
             return newState;
@@ -119,7 +119,7 @@ export default function spotsReducer(state = {}, action) {
             return newState;
         case EDIT_LISTING:
             newState = {...state}
-            newState[action.spot.id] = action.spot;
+            newState[action.payload.id] = action.payload;
             return newState;
         case DELETE_LISTING:
             newState = {...state};

@@ -27,8 +27,8 @@ export default function ListSpots() {
         <>
         <section id='cards-container'>
             {spots.map(spot => (
-                <NavLink to={`/spots/${spot.id}`} className='card'>
-                    <img src='https://a0.muscache.com/im/pictures/miso/Hosting-36767861/original/ffcc6215-0b1c-4e8c-b2e0-473b3c801014.jpeg?im_w=1200'></img>
+                <NavLink key={spot.id} to={`/spots/${spot.id}`} className='card'>
+                    <img src='https://a0.muscache.com/im/pictures/miso/Hosting-36767861/original/ffcc6215-0b1c-4e8c-b2e0-473b3c801014.jpeg?im_w=1200' alt=''></img>
                     <div className='card-info'>
                         <h3>{spot.title}</h3>
                         <ul id='stay-specifics'>
