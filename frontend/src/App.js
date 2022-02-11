@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import SingleSpot from "./components/SingleSpot";
 import ListSpots from "./components/ListSpots";
 import CreateListing from "./components/CreateListing";
+import { SetBooking } from "./components/Bookings/SetBooking";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route exact path='/spots'>
             <ListSpots />
+          </Route>
+          <Route path='/bookings'>
+            <SetBooking />
           </Route>
         </Switch>
       )}

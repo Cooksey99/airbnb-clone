@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import './SingleSpot.css'
-import { editListing, deleteListing } from "../../store/spot";
+import { editListing, deleteListing, getSpots } from "../../store/spot";
 import { SetBooking } from "../Bookings/SetBooking";
 
 export default function SingleSpot() {
@@ -25,19 +25,37 @@ export default function SingleSpot() {
     };
 
     // data for editing the listing
-    const [title, setTitle] = useState(oneSpot.title);
-    const [guestCount, setGuestCount] = useState(oneSpot.guestCount);
-    const [staySize, setStaySize] = useState(oneSpot.staySize);
-    const [roomCount, setRoomCount] = useState(oneSpot.roomCount);
-    const [bathCount, setBathCount] = useState(oneSpot.bathCount);
-    const [nightlyCost, setNightlyCost] = useState(oneSpot.nightlyCost);
-    const [description, setDescription] = useState(oneSpot.description);
+    const [title, setTitle] = useState(oneSpot?.title || '');
+    const [guestCount, setGuestCount] = useState(oneSpot?.guestCount || '');
+    const [staySize, setStaySize] = useState(oneSpot?.staySize || '');
+    const [roomCount, setRoomCount] = useState(oneSpot?.roomCount || '');
+    const [bathCount, setBathCount] = useState(oneSpot?.bathCount || '');
+    const [nightlyCost, setNightlyCost] = useState(oneSpot?.nightlyCost || '');
+    const [description, setDescription] = useState(oneSpot?.description || '');
 
 
     // const [deleteButton, setDeleteButton] = useState(false);
     useEffect(() => {
         checkUser();
     }, [dispatch, checkUser])
+
+    useEffect(() => {
+        dispatch(getSpots());
+    }, [dispatch])
+
+    useEffect(() => {
+        if (oneSpot) {
+            setTitle(oneSpot.title);
+            setGuestCount(oneSpot.guestCount);
+            setStaySize(oneSpot.staySize);
+            setRoomCount(oneSpot.roomCount);
+            setBathCount(oneSpot.bathCount);
+            setNightlyCost(oneSpot.nightlyCost);
+            setDescription(oneSpot.description);
+        } else {
+            return;
+        }
+    }, [oneSpot])
 
     // converts room to rooms, bath to baths, etc.
     // based on number being above 1
@@ -80,7 +98,7 @@ export default function SingleSpot() {
         <>
         <div className="listing">
             <h1>
-                Spot title = { id }
+                { title }
             </h1>
             <div>
                 <h2>Placeholder text</h2>
@@ -100,7 +118,10 @@ export default function SingleSpot() {
                 </>
             )}
         </div>
-        <SetBooking />
+        {/* only shows this option if you do know own the listing */}
+        {!sameUser && (
+            <SetBooking />
+        )}
         {editPage && (
             <div>
                 <h1>TEST THAT IT WORKS</h1>

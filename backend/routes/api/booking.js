@@ -7,7 +7,8 @@ const router = express.Router();
 
 router.get('/', asyncHandler(async(req, res) => {
     const bookings = await Booking.findAll();
-    res.json(bookings)
+    const data = bookings.map(booking => booking.dataValues)
+    res.json(data)
 }))
 
 router.post('/', asyncHandler(async(req, res) => {

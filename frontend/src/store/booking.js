@@ -1,11 +1,19 @@
 import { csrfFetch } from "./csrf";
 
-const CREATE_BOOKING = 'booking/createBooking';
+const CREATE_BOOKING = 'booking/create-booking';
+const LOAD_BOOKINGS = 'booking/load-bookings';
+
+const loadBookings = (bookings) => {
+    return {
+        type: CREATE_BOOKING,
+        payload: bookings
+    }
+}
 
 const addBooking = (booking) => {
     return {
         type: CREATE_BOOKING,
-        booking
+        payload: booking
     }
 }
 
@@ -29,5 +37,7 @@ export default function spotsReducer(state = {}, action) {
             newState = {...state};
             newState[action.payload.id] = action.payload;
             return newState;
+        default:
+            return state;
     }
 }
