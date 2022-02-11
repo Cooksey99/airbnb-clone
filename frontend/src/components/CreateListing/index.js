@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { createListing } from "../../store/spot";
 // import axios from 'axios';
 
@@ -36,12 +36,12 @@ export default function CreateListing() {
             description
         }
 
-        const newListing = await dispatch(createListing(listingData));
+        await dispatch(createListing(listingData));
         // console.log('Listing:   ' + newListing)
-        if (newListing) {
-            history.push(`/spots/${newListing.id}`);
-        }
-        return dispatchEvent(createListing(listingData))
+        // if (newListing) {
+        // }
+        history.push('/')
+        // return dispatchEvent(createListing(listingData))
     }
 
     return (

@@ -115,7 +115,7 @@ export default function spotsReducer(state = {}, action) {
             return newState;
         case CREATE_LISTING:
             newState = {...state}
-            newState[action.spot.id] = action.spot;
+            newState[action.payload.id] = action.payload;
             return newState;
         case EDIT_LISTING:
             newState = {...state}
