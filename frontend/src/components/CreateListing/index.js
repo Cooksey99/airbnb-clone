@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useDispatch } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createListing } from "../../store/spot";
 // import axios from 'axios';
 
