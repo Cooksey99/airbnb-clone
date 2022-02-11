@@ -102,22 +102,22 @@ export default function CreateListing() {
                 <input placeholder="URL goes here"
                 value={image2}
                 onChange={(e) => setImage2(e.target.value)}
-                required
+            
                 ></input>
                 <input placeholder="URL goes here"
                 value={image3}
                 onChange={(e) => setImage3(e.target.value)}
-                required
+
                 ></input>
                 <input placeholder="URL goes here"
                 value={image4}
                 onChange={(e) => setImage4(e.target.value)}
-                required
+
                 ></input>
                 <input placeholder="URL goes here"
                 value={image5}
                 onChange={(e) => setImage5(e.target.value)}
-                required
+
                 ></input>
 
 {/*
