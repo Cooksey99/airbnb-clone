@@ -1,4 +1,7 @@
 'use strict';
+
+const { sequelize } = require("../models");
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Spots', {
@@ -40,6 +43,23 @@ module.exports = {
         type: Sequelize.STRING(2000),
         allowNull: false
       },
+      image1: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      image2: {
+        type: Sequelize.STRING,
+      },
+      image3: {
+        type: Sequelize.STRING,
+      },
+      image4: {
+        type: Sequelize.STRING,
+      },
+      image5: {
+        type: Sequelize.STRING,
+      },
+
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

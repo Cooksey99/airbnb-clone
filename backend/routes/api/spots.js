@@ -34,7 +34,14 @@ const spotValidator = [
         .isInt(),
     check('description')
         .notEmpty()
-        .withMessage('Please enter a description')
+        .withMessage('Please enter a description'),
+    check('image1')
+        .notEmpty()
+        .withMessage('Please enter an image URL'),
+    check('image2'),
+    check('image3'),
+    check('image4'),
+    check('image2')
     ]
 
 // http://localhost:5000/api/spots - test route
@@ -46,20 +53,13 @@ router.get('/', asyncHandler(async(req, res) => {
 
 router.get('/:spotId', asyncHandler(async(req, res) => {
     const spot = await Spot.findByPk(req.params.id);
-
-    const image = await Spot.findAll({
-        where: {
-            spotId: req.params.spotId
-        }
-    })
-
     res.json(spot);
 }));
 
 // creating a listing/spot
 router.post('/', spotValidator, restoreUser,
 asyncHandler(async(req, res) => {
-
+    console.log('----------------' + req.user.id);
     const spot = await Spot.create({...req.body, userId: req.user.id})
     res.json(spot);
 }))

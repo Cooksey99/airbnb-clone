@@ -8,7 +8,12 @@ module.exports = (sequelize, DataTypes) => {
     roomCount: DataTypes.INTEGER,
     bathCount: DataTypes.INTEGER,
     nightlyCost: DataTypes.INTEGER,
-    description: DataTypes.STRING
+    description: DataTypes.STRING,
+    image1: DataTypes.STRING,
+    image2: DataTypes.STRING,
+    image3: DataTypes.STRING,
+    image4: DataTypes.STRING,
+    image5: DataTypes.STRING,
   }, {});
   Spot.associate = function(models) {
     // associations can be defined here

@@ -32,7 +32,11 @@ export default function SingleSpot() {
     const [bathCount, setBathCount] = useState(oneSpot?.bathCount || '');
     const [nightlyCost, setNightlyCost] = useState(oneSpot?.nightlyCost || '');
     const [description, setDescription] = useState(oneSpot?.description || '');
-
+    const [image1, setImage1] = useState(oneSpot?.image1 || '');
+    const [image2, setImage2] = useState(oneSpot?.image2 || '');
+    const [image3, setImage3] = useState(oneSpot?.image3 || '');
+    const [image4, setImage4] = useState(oneSpot?.image4 || '');
+    const [image5, setImage5] = useState(oneSpot?.image5 || '');
 
     // const [deleteButton, setDeleteButton] = useState(false);
     useEffect(() => {
@@ -85,7 +89,12 @@ export default function SingleSpot() {
             roomCount,
             bathCount,
             nightlyCost,
-            description
+            description,
+            image1,
+            image2,
+            image3,
+            image4,
+            image5
         }
         // const id = oneSpot.id;
         // console.log('spotId:        ' + id)
@@ -100,12 +109,15 @@ export default function SingleSpot() {
             <h1>
                 { title }
             </h1>
+            <img src={image1} alt=''></img>
             <div>
-                <h2>Placeholder text</h2>
                 <p>{ `${pluralText(oneSpot.guestCount, 'guest')}`}</p>
                 <p>{ `${pluralText(oneSpot.staySize, 'bedroom')}`}</p>
                 <p>{ `${pluralText(oneSpot.roomCount, 'bed')}`}</p>
                 <p>{ `${pluralText(oneSpot.bathCount, 'bath')}`}</p>
+            </div>
+            <div>
+                {description}
             </div>
             {sameUser && (
                 <>
@@ -119,9 +131,9 @@ export default function SingleSpot() {
             )}
         </div>
         {/* only shows this option if you do know own the listing */}
-        {!sameUser && (
+        {/* {!sameUser && (
             <SetBooking />
-        )}
+        )} */}
         {editPage && (
             <div>
                 <h1>TEST THAT IT WORKS</h1>
