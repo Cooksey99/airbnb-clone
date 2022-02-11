@@ -41,7 +41,7 @@ export const SetBooking = () => {
                 endDate
             }
 
-            const newBook = await dispatch(createBooking(formData));
+            await dispatch(createBooking(formData));
             // if (newBook) {
 
             // }
@@ -55,9 +55,14 @@ export const SetBooking = () => {
                         [selectionRange]
                     } onChange={handleSelect}/>
                 </div>
-                <button
-                onClick={() => handleSubmit()}
-                >TEST</button>
+                <form
+                onSubmit={handleSubmit}
+                >
+                    <button
+                    // onClick={() => handleSubmit()}
+                    >TEST</button>
+
+                </form>
             </>
         )
     }

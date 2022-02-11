@@ -6,9 +6,13 @@ const { restoreUser } = require('../../utils/auth');
 const router = express.Router();
 
 router.get('/', asyncHandler(async(req, res) => {
-    const bookings = await Booking.findAll();
-    const data = bookings.map(booking => booking.dataValues)
-    res.json(data)
+    const bookings = await Booking.findAll({
+        where: {
+            userId: req.params.id
+        }
+    });
+
+    res.json(bookings)
 }))
 
 router.post('/', asyncHandler(async(req, res) => {

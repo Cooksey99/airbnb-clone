@@ -26,6 +26,7 @@ export const createBooking = (inputInfo) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(addBooking(data));
+        return data;
     }
 }
 
@@ -35,7 +36,7 @@ export default function spotsReducer(state = {}, action) {
     switch (action.type) {
         case CREATE_BOOKING:
             newState = {...state};
-            newState[action.payload.id] = action.payload;
+            newState[action.booking.id] = action.booking;
             return newState;
         default:
             return state;

@@ -21,7 +21,7 @@ export default function SingleSpot() {
     // sets sameUser to true if the user owns the listing
 
     const checkUser = () => {
-        if (oneSpot.userId === sessionUser.id) setSameUser(true);
+        if (oneSpot?.userId === sessionUser?.id) setSameUser(true);
     };
 
     // data for editing the listing
@@ -43,19 +43,19 @@ export default function SingleSpot() {
         dispatch(getSpots());
     }, [dispatch])
 
-    useEffect(() => {
-        if (oneSpot) {
-            setTitle(oneSpot.title);
-            setGuestCount(oneSpot.guestCount);
-            setStaySize(oneSpot.staySize);
-            setRoomCount(oneSpot.roomCount);
-            setBathCount(oneSpot.bathCount);
-            setNightlyCost(oneSpot.nightlyCost);
-            setDescription(oneSpot.description);
-        } else {
-            return;
-        }
-    }, [oneSpot])
+    // useEffect(() => {
+    //     if (oneSpot) {
+    //         setTitle(oneSpot.title);
+    //         setGuestCount(oneSpot.guestCount);
+    //         setStaySize(oneSpot.staySize);
+    //         setRoomCount(oneSpot.roomCount);
+    //         setBathCount(oneSpot.bathCount);
+    //         setNightlyCost(oneSpot.nightlyCost);
+    //         setDescription(oneSpot.description);
+    //     } else {
+    //         return;
+    //     }
+    // }, [oneSpot])
 
     // converts room to rooms, bath to baths, etc.
     // based on number being above 1
