@@ -6,7 +6,12 @@ const { restoreUser } = require('../../utils/auth');
 const router = express.Router();
 
 router.get('/', asyncHandler(async(req, res) => {
-    const bookings = await Booking.findAll();
+    const bookings = await Booking.findAll({
+        where: {
+            userId: req.params.id
+        }
+    });
+
     res.json(bookings)
 }))
 
