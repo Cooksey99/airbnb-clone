@@ -83,10 +83,10 @@ export const BookedTrips = () => {
                         <h2>{book.spotInfo.title}</h2>
                         <p>{book.startDate}</p>
                         <p>{book.endDate}</p>
-                        <NavLink key={book.spotId} to={`/spots/${book.spotInfo.id}`}>
+                        <NavLink key={book.spotId} to={`/spots/${book.spotInfo.id}`} className='redirect-button'>
                             <button>Take me there</button>
                         </NavLink>
-                        <button
+                        <button className="cancel-button"
                         onClick={() => cancelBooking(book)}
                         >Cancel booking</button>
                     </div>
