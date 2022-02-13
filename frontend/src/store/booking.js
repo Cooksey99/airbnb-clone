@@ -2,6 +2,20 @@ import { csrfFetch } from "./csrf";
 
 const CREATE_BOOKING = 'booking/create-booking';
 const LOAD_BOOKINGS = 'booking/load-bookings';
+const DELETE_BOOKING = 'booking/delete-booking'
+
+const deleteBooking = (booking) => {
+    return {
+        type: DELETE_BOOKING,
+        payload: booking
+    }
+}
+export const fetchDeleteBooking = (booking) => async (dispatch) => {
+    const response = await csrfFetch(`/api/bookg/${booking.id}`, {
+        method: 'delete'
+    });
+    if (response.ok) dispatch(deleteBooking(response))
+}
 
 const loadBookings = (bookings) => {
     return {
@@ -50,6 +64,10 @@ export default function bookingsReducer(state = {}, action) {
         case CREATE_BOOKING:
             newState = {...state};
             newState[action.payload.id] = action.payload;
+            return newState;
+        case DELETE_BOOKING:
+            newState = {...state}
+            delete newState[action.id];
             return newState;
         default:
             return state;

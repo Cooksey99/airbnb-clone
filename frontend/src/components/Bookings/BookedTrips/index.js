@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { fetchBookings } from "../../../store/booking";
+import { NavLink } from "react-router-dom";
+import { fetchBookings, fetchDeleteBooking } from "../../../store/booking";
 import { findSpot, getSpots } from "../../../store/spot";
 import './BookedTrips.css';
 
@@ -61,6 +62,10 @@ export const BookedTrips = () => {
         if (bookings) setNoTrips(true);
     }
 
+    const cancelBooking = (book) => {
+        dispatch(fetchDeleteBooking(book))
+    }
+
     return (
         <>
             <h1>Trips</h1>
@@ -78,6 +83,12 @@ export const BookedTrips = () => {
                         <h2>{book.spotInfo.title}</h2>
                         <p>{book.startDate}</p>
                         <p>{book.endDate}</p>
+                        <NavLink key={book.spotId} to={`/spots/${book.spotInfo.id}`}>
+                            <button>Take me there</button>
+                        </NavLink>
+                        <button
+                        onClick={() => cancelBooking(book)}
+                        >Cancel booking</button>
                     </div>
                 )
 

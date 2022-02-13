@@ -80,7 +80,7 @@ asyncHandler(async(req, res) => {
     res.json(spot)
 }))
 
-router.delete('/:id', asyncHandler(async (req, res) => {
+router.delete('/:id', restoreUser, asyncHandler(async (req, res) => {
     const spotId = req.params.id;
     const spot = await Spot.findByPk(spotId);
     await spot.destroy();
