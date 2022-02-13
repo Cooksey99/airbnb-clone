@@ -23,6 +23,10 @@ export default function ListSpots() {
         } else return `${number} ${word}`
     }
 
+    // const handleDelete = () => {
+    //     dispatch(getSpots())
+    // }
+
     return (
         <>
         <section id='cards-container'>

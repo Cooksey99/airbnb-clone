@@ -4,10 +4,12 @@ import sessionReducer from "./session";
 import spotsReducer from "./spot";
 import { csrfFetch, restoreCSRF } from "./csrf";
 import * as sessionActions from './session';
+import bookingsReducer from "./booking";
 
 const rootReducer = combineReducers({
   spots: spotsReducer,
-  session: sessionReducer
+  session: sessionReducer,
+  booking: bookingsReducer
 });
 
 let enhancer;

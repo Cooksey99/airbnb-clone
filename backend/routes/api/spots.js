@@ -1,6 +1,5 @@
 const express = require('express');
 const { Spot } = require('../../db/models');
-const { SpotsImage } = require('../../db/models')
 const asyncHandler = require('express-async-handler');
 const { restoreUser } = require('../../utils/auth');
 
@@ -51,8 +50,11 @@ router.get('/', asyncHandler(async(req, res) => {
     res.json(allSpots);
 }));
 
-router.get('/:spotId', asyncHandler(async(req, res) => {
-    const spot = await Spot.findByPk(req.params.id);
+router.get('/:spotId', restoreUser, asyncHandler(async(req, res) => {
+    // console.log('req:      ' + req)
+    const { spotId }  = req.params;
+
+    const spot = await Spot.findByPk(spotId);
     res.json(spot);
 }));
 

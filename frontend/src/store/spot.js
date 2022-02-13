@@ -61,6 +61,7 @@ const setSpots = (spots) => {
 }
 
 const locateSpot = (spot) => {
+    console.log('locate spot is working:    ' + spot)
     return {
         type: FIND_SPOT,
         spot
@@ -69,10 +70,10 @@ const locateSpot = (spot) => {
 
 export const findSpot = (spotId) => async (dispatch) => {
     const response = await csrfFetch(`/api/spots/${spotId}`);
-
     if (response.ok) {
-        const data = await response.json();
-        dispatch(locateSpot(data))
+        // const data = await response.json();
+        // console.log('response:      ' + response.ok)
+        dispatch(locateSpot(response))
     }
 
 }
@@ -110,6 +111,7 @@ export default function spotsReducer(state = {}, action) {
             action.payload.forEach(spot => newState[spot.id] = spot);
             return newState;
         case FIND_SPOT:
+            console.log('testing final step')
             newState = {...state};
             newState[action.spot.id] = action.spot;
             return newState;

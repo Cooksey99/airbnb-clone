@@ -5,9 +5,17 @@ const LOAD_BOOKINGS = 'booking/load-bookings';
 
 const loadBookings = (bookings) => {
     return {
-        type: CREATE_BOOKING,
+        type: LOAD_BOOKINGS,
         payload: bookings
     }
+}
+export const fetchBookings = (userId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/booking/${userId}`);
+    const data = await response.json();
+
+    dispatch(loadBookings(data));
+    // console.log(response)
+    return response;
 }
 
 const addBooking = (booking) => {
@@ -18,7 +26,7 @@ const addBooking = (booking) => {
 }
 
 export const createBooking = (inputInfo) => async (dispatch) => {
-    const response = await csrfFetch('/api/bookings', {
+    const response = await csrfFetch('/api/booking', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(inputInfo)
@@ -30,13 +38,18 @@ export const createBooking = (inputInfo) => async (dispatch) => {
     }
 }
 
-export default function spotsReducer(state = {}, action) {
+export default function bookingsReducer(state = {}, action) {
     let newState;
 
     switch (action.type) {
+        case LOAD_BOOKINGS:
+            newState = {};
+            action.payload.forEach(spot => newState[spot.id] = spot);
+            console.log('here is the state: ' + newState[1].startDate);
+            return newState;
         case CREATE_BOOKING:
             newState = {...state};
-            newState[action.booking.id] = action.booking;
+            newState[action.payload.id] = action.payload;
             return newState;
         default:
             return state;

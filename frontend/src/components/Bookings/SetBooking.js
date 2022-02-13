@@ -40,7 +40,7 @@ export const SetBooking = () => {
                 startDate,
                 endDate
             }
-
+            console.log('formData:      ' + formData);
             await dispatch(createBooking(formData));
             // if (newBook) {
 

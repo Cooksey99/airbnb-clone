@@ -9,7 +9,8 @@ import HomePage from "./components/HomePage";
 import SingleSpot from "./components/SingleSpot";
 import ListSpots from "./components/ListSpots";
 import CreateListing from "./components/CreateListing";
-import { SetBooking } from "./components/Bookings/SetBooking";
+// import { SetBooking } from "./components/Bookings/SetBooking";
+import { BookedTrips } from "./components/Bookings/BookedTrips";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,10 +24,10 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path='/spots/create'>
+          <Route path='/spots/create'>
             <CreateListing />
           </Route>
-          <Route exact path='/spots/:id'>
+          <Route path='/spots/:id'>
             <SingleSpot />
           </Route>
           <Route path="/login">
@@ -38,11 +39,11 @@ function App() {
           <Route exact path='/'>
             <HomePage />
           </Route>
-          <Route exact path='/spots'>
-            <ListSpots />
+          <Route path='/booking'>
+            <BookedTrips />
           </Route>
-          <Route path='/bookings'>
-            <SetBooking />
+          <Route path='/spots'>
+            <ListSpots />
           </Route>
         </Switch>
       )}

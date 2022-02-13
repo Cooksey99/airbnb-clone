@@ -116,8 +116,8 @@ export default function SingleSpot() {
                 <p>{ `${pluralText(oneSpot.roomCount, 'bed')}`}</p>
                 <p>{ `${pluralText(oneSpot.bathCount, 'bath')}`}</p>
             </div>
-            <div>
                 {description}
+            <div>
             </div>
             {sameUser && (
                 <>
@@ -131,9 +131,9 @@ export default function SingleSpot() {
             )}
         </div>
         {/* only shows this option if you do know own the listing */}
-        {/* {!sameUser && (
+        {!sameUser && (
             <SetBooking />
-        )} */}
+        )}
         {editPage && (
             <div>
                 <h1>TEST THAT IT WORKS</h1>

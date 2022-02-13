@@ -1,0 +1,7 @@
+.booking-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /* background-color: coral; */
+    width: 40em;
+}
