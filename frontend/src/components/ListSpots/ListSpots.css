@@ -83,8 +83,9 @@
     /* grid layout */
     justify-content: center;
 }
-.upper-button button {
+div.upper-button button {
     display: flex;
+    flex-direction: row;
     all: unset;
 }
 .upper-button .check-in-selector {
