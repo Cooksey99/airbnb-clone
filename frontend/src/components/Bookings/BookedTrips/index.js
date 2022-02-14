@@ -7,11 +7,13 @@ import './BookedTrips.css';
 
 export const BookedTrips = () => {
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user.id);
+    console.log('sessionUser:       ' + sessionUser)
     // get info for logged in user
     const bookingsObj = useSelector(state => state.booking);
     const bookings = Object.values(bookingsObj);
 
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
 
     const spotsObj = useSelector(state => state.spots);
     const spots = Object.values(spotsObj);
