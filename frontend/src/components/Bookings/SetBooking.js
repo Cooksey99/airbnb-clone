@@ -3,13 +3,14 @@ import { DateRangePicker } from 'react-date-range';
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { createBooking } from '../../store/booking';
 import './SetBookings.css'
 
 export const SetBooking = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
+    const history = useHistory();
 
     function DatePicker() {
         const sessionUser = useSelector(state => state.session.user.id);
@@ -41,29 +42,31 @@ export const SetBooking = () => {
                 startDate,
                 endDate
             }
-            // console.log('formData:      ' + formData);
-            dispatch(createBooking(formData));
-            // if (newBook) {
-
-            // }
+            console.log('formData:      ' + formData);
+            const newBook = await dispatch(createBooking(formData));
+            if (newBook) {
+                history.push('/booking');
+            }
 
         }
 
         return (
             <>
-                <div id="date-picker">
-                    <DateRangePicker ranges={
-                        [selectionRange]
-                    } onChange={handleSelect}/>
-                </div>
-                <form
-                onSubmit={handleSubmit}
-                >
-                    <button
-                    // onClick={() => handleSubmit()}
-                    >TEST</button>
+                <div id='full-date-element'>
+                    <div id="date-picker">
+                        <DateRangePicker ranges={
+                            [selectionRange]
+                        } onChange={handleSelect} />
+                    </div>
+                    <form
+                        onSubmit={handleSubmit}
+                    >
+                        <button className='submit-button'
+                        // onClick={() => handleSubmit()}
+                        >Book</button>
 
-                </form>
+                    </form>
+                </div>
             </>
         )
     }

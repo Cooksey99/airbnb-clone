@@ -23,6 +23,7 @@ router.get('/:id', restoreUser, asyncHandler(async(req, res) => {
 
 router.get('/', asyncHandler(async(req, res) => {
     const bookings = await Booking.findAll();
+    console.log('workingggggg')
     const books = bookings.map(book => book.dataValues)
     res.json(books)
 }))

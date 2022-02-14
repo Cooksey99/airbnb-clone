@@ -12,7 +12,7 @@ export default function SingleSpot() {
 
     const [sameUser, setSameUser] = useState(false);
     const [editPage, setEditPage] = useState(false);
-
+    const [bookingOpen, setBookingOpen] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
     // console.log('session user:      ' + sessionUser.id);
     // contains the entire spot object
@@ -110,15 +110,58 @@ export default function SingleSpot() {
                 { title }
             </h1>
             <img src={image1} alt=''></img>
-            <div>
-                <p>{ `${pluralText(oneSpot.guestCount, 'guest')}`}</p>
-                <p>{ `${pluralText(oneSpot.staySize, 'bedroom')}`}</p>
-                <p>{ `${pluralText(oneSpot.roomCount, 'bed')}`}</p>
-                <p>{ `${pluralText(oneSpot.bathCount, 'bath')}`}</p>
-            </div>
-                {description}
-            <div>
-            </div>
+            <section className="main-section">
+                <div className="left-info">
+                    <div className="list-items">
+                        <p>{ `${pluralText(oneSpot.guestCount, 'guest')}`}</p>
+                        <li>{ `${pluralText(oneSpot.staySize, 'bedroom')}`}</li>
+                        <li>{ `${pluralText(oneSpot.roomCount, 'bed')}`}</li>
+                        <li>{ `${pluralText(oneSpot.bathCount, 'bath')}`}</li>
+                    </div>
+                    <div className="description">
+                        {description}
+                    </div>
+                </div>
+                {/* only shows this option if you do know own the listing */}
+                {!sameUser && (
+                    <div className="booking-right">
+                        <div id="check-in-info">
+                            <h2 style={{margin: '0 0 1em 0 '}}>${oneSpot.nightlyCost} / night</h2>
+                            <div className="button-section">
+                                <div className="upper-button">
+                                    <button className="check-in-selector">
+                                        <p>Check in</p>
+                                        <p className="quiet-text">Add date</p>
+                                    </button>
+                                    <button className="check-out-selector">
+                                        <p>Check out</p>
+                                        <p className="quiet-text">Add date</p>
+                                    </button>
+                                </div>
+                                <select className="guest-selector">
+                                    <option value='1'>1</option>
+                                    <option value='2'>2</option>
+                                    <option value='3'>3</option>
+                                    <option value='4'>4</option>
+                                    <option value='5'>5</option>
+                                    <option value='6'>6</option>
+                                    <option value='7'>7</option>
+                                    <option value='8'>8</option>
+                                    <option value='9'>9</option>
+                                </select>
+                            </div>
+                        <button
+                        onClick={() => setBookingOpen(!bookingOpen)}
+                        className="booking-open">Book now</button>
+                        </div>
+                        {bookingOpen && (
+                            <div className="calendar">
+                                <SetBooking />
+                            </div>
+                        )}
+                    </div>
+                )}
+            </section>
             {sameUser && (
                 <>
                     <button
@@ -130,10 +173,6 @@ export default function SingleSpot() {
                 </>
             )}
         </div>
-        {/* only shows this option if you do know own the listing */}
-        {!sameUser && (
-            <SetBooking />
-        )}
         {editPage && (
             <div>
                 <h1>TEST THAT IT WORKS</h1>

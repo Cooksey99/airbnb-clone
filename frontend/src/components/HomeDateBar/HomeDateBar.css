@@ -11,10 +11,15 @@
     /* styling */
     background: white;
     border-radius: 4em;
+    overflow: hidden;
 }
+/* #date-bar:hover {
+
+} */
 #date-bar div {
     display: flex;
     flex-direction: column;
+    text-align: ;
 }
 .date-button {
     height: 4em;
@@ -26,3 +31,32 @@
     border-radius: 1em;
     margin: auto;
 }
+.sec-one input{
+    all: unset;
+
+}
+.sec-four select {
+    all: unset;
+}
+.sec-one, .sec-two, .sec-three, .sec-four {
+    width: 25%;
+    height: 100%;
+}
+.sec-one, .sec-two {
+    border-right: 1px rgb(221, 221, 221) solid;
+}
+.sec-four {
+    border-left: 1px rgb(221, 221, 221) solid;
+}
+.sec-one:hover, .sec-two:hover, .sec-three:hover, .sec-four:hover {
+    background: rgb(221, 221, 221);
+    border-radius: 2em;
+    border: none;
+}
+
+/*
+.sec-one:after, .sec-two:after, .sec-three:after, .sec-four:after {
+    height: 50%;
+    border-left: white;
+    top: -5%
+} */

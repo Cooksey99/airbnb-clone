@@ -49,9 +49,9 @@ export const BookedTrips = () => {
                 })
             })
         }
- 
+
     const getBookedStays = () => {
-        dispatch(fetchBookings(sessionUser));
+        dispatch(fetchBookings(sessionUser.id));
         dispatch(getSpots());
         dispatch(findSpot(1));
     }
@@ -65,57 +65,57 @@ export const BookedTrips = () => {
     }
 
     const cancelBooking = (book) => {
-        console.log("testing:           " + book.id)
+        console.log(book)
         dispatch(fetchDeleteBooking(book.id))
-
     }
 
     return (
         <>
-            <h1>Trips</h1>
-            {noTrips && (
-                <div>
-                    {validBookings.map(book => {
-                        validBookings.forEach(book => {
-                            spots.forEach(spot => {
-                                if (book.spotsId === spot.id) {
-                                    book.spotInfo = spot;
-                                }
-                            })
+            <div className="all-content">
+                <h1>Trips</h1>
+                {validBookings.map(book => {
+                    validBookings.forEach(book => {
+                        spots.forEach(spot => {
+                            if (book.spotsId === spot.id) {
+                                book.spotInfo = spot;
+                            }
                         })
-                        return (
-                            <div className="booking-card" key={book.id}>
-                                <img src={book?.spotInfo?.image1} alt='' />
-                                {/* <h1>{JSON.stringify(book.spotInfo.image1)}</h1> */}
-                                <h2>{book?.spotInfo?.title}</h2>
-                                <p>{book?.startDate}</p>
-                                <p>{book?.endDate}</p>
-                                <div className="buttons">
-                                    <NavLink key={book.spotId} to={`/spots/${book?.spotInfo?.id}`} className='redirect-button'>
-                                        <button>Take me there</button>
-                                    </NavLink>
-                                    <button className="cancel-button"
-                                    onClick={() => cancelBooking(book)}
-                                    >Cancel booking</button>
-                                </div>
+                    })
+                    return (
+                        <div className="booking-card" key={book.id}>
+                        <div className="full-data">
+                            <div className="main-image">
+                                    <img src={book.spotInfo.image1} alt='' />
+                                    <h2>{book.spotInfo.title}</h2>
                             </div>
-                        )
+                                <p>{book.startDate}</p>
+                                <p>{book.endDate}</p>
+                        </div>
+                            <div className="div-buttons">
+                                <NavLink key={book.spotId} to={`/spots/${book.spotInfo.id}`} className='redirect-button'>
+                                    <button>Take me there</button>
+                                </NavLink>
+                                <button className="cancel-button"
+                                onClick={() => cancelBooking(book)}
+                                >Cancel booking</button>
+                            </div>
+                        </div>
+                    )
 
-                    })}
-
-                </div>
-
-            )}
+                })}
+            </div>
 
             {!noTrips && (
-                <div>
-                    <h2>No trips booked...yet!</h2>
-                    <p>Time to dust off your bags and start planning your next adventure</p>
-                </div>
+                <section>
+                    <div>
+                        <h2>No trips booked...yet!</h2>
+                        <p>Time to dust off your bags and start planning your next adventure</p>
+                    </div>
+                    <button
+                        // onClick={() => grabSpotInfo()}
+                    >Start searching</button>
+                </section>
             )}
-            <button
-                // onClick={() => grabSpotInfo()}
-            >Start searching</button>
         </>
     )
 
