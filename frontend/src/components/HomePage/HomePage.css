@@ -1,3 +1,15 @@
+
+#main-section {
+    background-color: black;
+    object-fit: contain;
+    width: 100%;
+    display: flex;
+}
 img {
-    height: 40em;
+    width: 80em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    border-radius: 1em;
 }

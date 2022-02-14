@@ -1,15 +1,15 @@
 #date-bar {
     /* centering */
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     text-align: center;
     margin: auto;
     /* sizing */
     height: 4em;
-    width: 65%;
+    width: 54em;
     /* styling */
-    background: pink;
+    background: white;
     border-radius: 4em;
 }
 #date-bar div {
@@ -20,5 +20,9 @@
     height: 4em;
     background: none;
     border: none;
+    margin: auto;
+}
+#date-select {
+    border-radius: 1em;
     margin: auto;
 }

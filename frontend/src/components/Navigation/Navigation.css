@@ -1,19 +1,62 @@
-#nav-bar {
-    background: coral;
-    height: 4em;
+* {
+    text-decoration: none;
     margin: 0;
 }
+
+#noScroll-nav {
+    background: black;
+    height: 4em;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
+#left-nav {
+    margin-left: 3em;
+}
+
+#right-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 3em;
+}
+#noScroll-nav #host-tab {
+
+}
+
 #button-container {
     float: right;
-    height: 3.5em;
-    width: 6em;
-    border-radius: 2em;
-    border: 1px black solid;
-    background: grey;
     display: flex;
     justify-content: center;
 }
 #profile-button {
-    background: pink;
+    float: right;
+    height: 3.5em;
+    width: 6em;
+    margin-right: 2em;
+    border-radius: 2em;
+    border: 1px black solid;
+    background: grey;
+
+}
+#host-tab {
+    margin: auto;
+    margin-right: 3em;
+}
+.profile-dropdown {
+    background: white;
+    position: absolute;
+    top: 6em;
+    right: 2em;
+    border-radius: 1em;
+    list-style: none;
+}
+.search-background {
+    background: black;
+}
+.sticky-bar {
+    position: fixed;
     width: 100%;
 }

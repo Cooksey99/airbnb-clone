@@ -5,6 +5,7 @@ import 'react-date-range/dist/theme/default.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createBooking } from '../../store/booking';
+import './SetBookings.css'
 
 export const SetBooking = () => {
     const dispatch = useDispatch();

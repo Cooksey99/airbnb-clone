@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import './HomeDateBar.css'
 import { DateRangePicker } from 'react-date-range';
-import 'react-date-range/dist/styles.css'
-import 'react-date-range/dist/theme/default.css'
+// import 'react-date-range/dist/styles.css'
+// import 'react-date-range/dist/theme/default.css'
 import { SetBooking } from "../Bookings/SetBooking";
 
 export default function HomeDateBar() {
@@ -72,7 +72,11 @@ export default function HomeDateBar() {
                     </select>
                 </div>
             </section>
-            {dateButton && <SetBooking />}
+            {dateButton && (
+                <div id="date-select">
+                    <SetBooking />
+                </div>
+            )}
         </>
     )
 }
