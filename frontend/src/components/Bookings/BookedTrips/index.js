@@ -51,7 +51,7 @@ export const BookedTrips = () => {
         }
 
     const getBookedStays = () => {
-        dispatch(fetchBookings(sessionUser.id));
+        dispatch(fetchBookings(sessionUser));
         dispatch(getSpots());
         dispatch(findSpot(1));
     }

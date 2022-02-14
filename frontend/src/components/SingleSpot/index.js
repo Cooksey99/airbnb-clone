@@ -101,6 +101,7 @@ export default function SingleSpot() {
         // console.log('userId:   ' + sessionUser.id)
         await dispatch(editListing(listingData, id));
         // return dispatchEvent(editListing(listingData, id))
+        setEditPage(false);
     }
 
     return (
@@ -233,7 +234,9 @@ export default function SingleSpot() {
                     required
                     ></textarea>
                     <div className="button-area">
-                        <button>Submit Changes</button>
+                        <button
+                        // onClick={() => setEditPage(false)}
+                        >Submit Changes</button>
                         <button
                         onClick={() => setEditPage(false)}
                         >Close</button>
