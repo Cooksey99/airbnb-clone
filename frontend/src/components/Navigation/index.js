@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+// import '../../logo'
 import { ScrolledNavigation } from './scrolledNav';
 
 function Navigation({ isLoaded }){
@@ -33,9 +34,7 @@ function Navigation({ isLoaded }){
 
   const sessionUser = useSelector(state => state.session.user);
 
-  function something () {
-    return 'hello'
-  }
+
 
   const [color, setColor] = useState({color: 'black'});
 
@@ -64,7 +63,10 @@ function Navigation({ isLoaded }){
     {/* <section className='sticky-bar'> */}
     {/* {!scrollEffect && ( */}
       <nav id='noScroll-nav'>
-      <NavLink exact to="/" id='left-nav' style={{color: 'white'}}>Airunme</NavLink>
+      <NavLink exact to="/" id='left-nav' style={{color: 'white'}}>
+        Airuandme
+        {/* <img src='../../logo/Airuandme-logos_white.png' alt=''></img> */}
+      </NavLink>
       <NavLink exact to="/spots" style={{color: 'white'}}>Places to stay</NavLink>
       <div id='right-nav'>
         {isLoaded && sessionLinks}

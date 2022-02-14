@@ -38,25 +38,25 @@ export default function HomeDateBar() {
     return (
         <>
             <section id="date-bar">
-                <div>
+                <div className="sec-one">
                     <label>Location</label>
                     <input className="location"></input>
                 </div>
-                <div>
+                <div className="sec-two">
                     <button className="date-button"
                     onClick={buttonClick}>
                         <p>Check in</p>
                         <p>Add dates</p>
                     </button>
                 </div>
-                <div>
+                <div className="sec-three">
                     <button className="date-button"
                     onClick={buttonClick}>
                         <p>Check out</p>
                         <p>Add dates</p>
                     </button>
                 </div>
-                <div>
+                <div className="sec-four">
                     <label>Guests</label>
                     <select
                     className="guests">

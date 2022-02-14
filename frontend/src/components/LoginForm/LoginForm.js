@@ -31,10 +31,8 @@ function LoginForm() {
                 ))}
             </ul>
             <div className="divider-login">
-                <label>
-                    Username or Email
-                </label>
                 <input
+                    placeholder="Username or Email"
                     type="text"
                     value={credential}
                     onChange={(e) => setCredential(e.target.value)}
@@ -42,10 +40,9 @@ function LoginForm() {
                 />
             </div>
             <div className="divider-login">
-                <label>
-                    Password
-                </label>
+
                 <input
+                    placeholder="Password"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}

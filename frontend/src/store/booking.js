@@ -4,17 +4,18 @@ const CREATE_BOOKING = 'booking/create-booking';
 const LOAD_BOOKINGS = 'booking/load-bookings';
 const DELETE_BOOKING = 'booking/delete-booking'
 
-const deleteBooking = (booking) => {
+const deleteBooking = (bookId) => {
+
     return {
         type: DELETE_BOOKING,
-        payload: booking
+        bookId
     }
 }
-export const fetchDeleteBooking = (booking) => async (dispatch) => {
-    const response = await csrfFetch(`/api/bookg/${booking.id}`, {
+export const fetchDeleteBooking = (bookId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/booking/${bookId}`, {
         method: 'delete'
     });
-    if (response.ok) dispatch(deleteBooking(response))
+    if (response.ok) dispatch(deleteBooking(bookId))
 }
 
 const loadBookings = (bookings) => {
@@ -24,6 +25,7 @@ const loadBookings = (bookings) => {
     }
 }
 export const fetchBookings = (userId) => async (dispatch) => {
+    console.log(userId)
     const response = await csrfFetch(`/api/booking/${userId}`);
     const data = await response.json();
 
@@ -57,17 +59,19 @@ export default function bookingsReducer(state = {}, action) {
 
     switch (action.type) {
         case LOAD_BOOKINGS:
+            // console.log('loading bookings')
             newState = {};
             action.payload.forEach(spot => newState[spot.id] = spot);
-            console.log('here is the state: ' + newState[1].startDate);
+            // console.log('here is the state: ' + newState[1].startDate);
             return newState;
         case CREATE_BOOKING:
             newState = {...state};
             newState[action.payload.id] = action.payload;
             return newState;
         case DELETE_BOOKING:
-            newState = {...state}
-            delete newState[action.id];
+            newState = { ...state }
+            // console.log('delete a booking:      ' + newState[action])
+            delete newState[action.bookId]
             return newState;
         default:
             return state;

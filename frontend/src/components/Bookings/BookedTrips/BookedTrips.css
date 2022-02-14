@@ -1,7 +1,42 @@
+.all-content{
+    margin: 4em;
+}
+
 .booking-card {
     display: flex;
     flex-direction: column;
     text-align: center;
     /* background-color: coral; */
     width: 40em;
+    border-bottom: 1px black solid;
+}
+.booking-card img {
+    width: 20em;
+}
+.main-image {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.booking-card button {
+    width: 10em;
+}
+
+.div-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+    padding-bottom: 2em;
+    padding-right: 1em;
+}
+.div-buttons button {
+    height: 4em;
+    border-radius: 1em;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    border: 1px solid rgb(221, 221, 221);
+}
+.full-data {
+    display: flex;
+    align-items: center;
 }

@@ -5,9 +5,23 @@
     justify-content: center;
     padding: 0;
     object-fit: contain;
-
 }
 .rdrDateRangePickerWrapper {
     border-radius: 1em;
     overflow: hidden;
+}
+#full-date-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+#full-date-element .submit-button{
+        height: 4em;
+        border-radius: 1em;
+        border: none;
+        background-image: var(--dls19-brand-gradient-radial, radial-gradient(circle at center, #FF385C 0%, #E61E4D 27.5%, #E31C5F 40%, #D70466 57.5%, #BD1E59 75%, #BD1E59 100% )) !important;
+        color: white;
+        margin-top: 2em;
+        width: 15em;
 }

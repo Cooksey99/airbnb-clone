@@ -10,7 +10,7 @@ const router = express.Router();
 
 // get all bookings for given user
 router.get('/:id', restoreUser, asyncHandler(async(req, res) => {
-    const id = req.user.id;
+    const id = req.params.id;
     console.log('test')
     const bookings = await Booking.findAll({
         where: { userId: id },
@@ -21,12 +21,13 @@ router.get('/:id', restoreUser, asyncHandler(async(req, res) => {
     res.json(response)
 }))
 
-// router.get('/', asyncHandler(async(req, res) => {
-//     const bookings = Booking.findAll();
-//     const books = bookings.map(book => book)
+router.get('/', asyncHandler(async(req, res) => {
+    const bookings = await Booking.findAll();
+    console.log('workingggggg')
+    const books = bookings.map(book => book.dataValues)
+    res.json(books)
+}))
 
-//     res.json(books)
-// }))
 
 router.post('/', asyncHandler(async(req, res) => {
     const booking = await Booking.create(req.body);
@@ -35,11 +36,15 @@ router.post('/', asyncHandler(async(req, res) => {
 
 // delete booking of choice
 router.delete('/:id', restoreUser, asyncHandler(async(req, res) => {
-    const bookingId = req.params.id;
+    // const bookingId = req.params.id;
 
-    const booking = await Booking.findByPk(bookingId);
-    await booking.destroy();
+    // const booking = await Booking.findByPk(bookingId);
+    // await booking.destroy();
 
+    const id = req.params.id;
+    const booking = await Booking.findByPk(id)
+    await booking.destroy()
+    return res.json(id)
 }))
 
 module.exports = router;
