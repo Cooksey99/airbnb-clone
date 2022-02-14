@@ -164,60 +164,81 @@ export default function SingleSpot() {
             </section>
             {sameUser && (
                 <>
+                <div className="edit-option">
                     <button
                     onClick={() => setEditPage(true)}
                     >Edit listing</button>
                     <button
                     onClick={() => removeListing(id)}
                     >Remove listing</button>
+                </div>
                 </>
             )}
         </div>
         {editPage && (
-            <div>
-                <h1>TEST THAT IT WORKS</h1>
+            <div className="edit-form">
+                <h1>Edit listing</h1>
                 <form
                 onSubmit={submitEdits}>
-                    <label>Title</label>
+                    <label className="title-form">Title</label>
                     <input value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     required
                     ></input>
-                    <label>Guest quantity</label>
-                    <input value={guestCount}
-                    onChange={(e) => setGuestCount(e.target.value)}
-                    required
-                    ></input>
-                    <label>Size of spot</label>
-                    <input value={staySize}
-                    onChange={(e) => setStaySize(e.target.value)}
-                    required
-                    ></input>
-                    <label>Number of rooms</label>
-                    <input value={roomCount}
-                    onChange={(e) => setRoomCount(e.target.value)}
-                    required
-                    ></input>
-                    <label>Number of bathrooms</label>
-                    <input value={bathCount}
-                    onChange={(e) => setBathCount(e.target.value)}
-                    required
-                    ></input>
-                    <label>Nightly cost</label>
-                    <input value={nightlyCost}
-                    onChange={(e) => setNightlyCost(e.target.value)}
-                    required
-                    ></input>
+                    <div className="mid-info-div">
+                        <div className="vert-align">
+                            <label>Guest quantity</label>
+                            <input value={guestCount}
+                            placeholder='Guest quantity'
+                            onChange={(e) => setGuestCount(e.target.value)}
+                            required
+                            ></input>
+                        </div>
+                        <div className="vert-align">
+                            <label>Size of spot</label>
+                            <input value={staySize}
+                            placeholder='Size of spot'
+                            onChange={(e) => setStaySize(e.target.value)}
+                            required
+                            ></input>
+                        </div>
+                        <div className="vert-align">
+                            <label>Number of rooms</label>
+                            <input value={roomCount}
+                            placeholder='Number of rooms'
+                            onChange={(e) => setRoomCount(e.target.value)}
+                            required
+                            ></input>
+                        </div>
+                        <div className="vert-align">
+                            <label>Number of bathrooms</label>
+                            <input value={bathCount}
+                            placeholder='Number of bathrooms'
+                            onChange={(e) => setBathCount(e.target.value)}
+                            required
+                            ></input>
+                        </div>
+                    </div>
+                    <div className="vert-align">
+                        <label>Nightly cost</label>
+                        <input value={nightlyCost}
+                        placeholder='Nightly cost'
+                        onChange={(e) => setNightlyCost(e.target.value)}
+                        required
+                        ></input>
+                    </div>
                     <label>Tell us about your place!</label>
                     <textarea value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     required
                     ></textarea>
-                    <button>Submit Changes</button>
+                    <div className="button-area">
+                        <button>Submit Changes</button>
+                        <button
+                        onClick={() => setEditPage(false)}
+                        >Close</button>
+                    </div>
                 </form>
-                <button
-                onClick={() => setEditPage(false)}
-                >Cancel</button>
             </div>
         )}
         </>

@@ -1,3 +1,61 @@
 .listing {
 }
 
+.edit-option button {
+    height: 4em;
+}
+.edit-form {
+    padding: 2em;
+    width: 60em;
+    margin: auto;
+    background: white;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    border-radius: 1em;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 25%;
+}
+.vert-align {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.edit-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+
+.edit-form input {
+    margin: auto;
+    height: 4em;
+    width: 20em;
+}
+.edit-form button {
+    width: 20em;
+    height: 4em;
+}
+.mid-info-div {
+    display: flex;
+    justify-content: space-around;
+    gap: 2em;
+}
+.mid-info-div input {
+    width: 10em;
+}
+.edit-form textarea {
+    height: 20em;
+    resize: none;
+}
+.button-area {
+    display: flex;
+    justify-content: space-between;
+}
+.title-form {
+    margin: auto;
+}
