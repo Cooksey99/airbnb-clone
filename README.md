@@ -4,7 +4,7 @@
 2. Install dependencies in root directory: npm install
 
 3. Create user with PASSWORD and CREATEDB in postgres
-    - CREATE USER *username* WITH *password*
+    - CREATE USER *username* WITH *password* CREATEDB;
 
 4. Create .env file in directory. Copy the contents of env.example into the newly created .env file. Change the information to match that of which you created
 
