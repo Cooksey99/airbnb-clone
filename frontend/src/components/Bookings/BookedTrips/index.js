@@ -7,6 +7,8 @@ import './BookedTrips.css';
 
 export const BookedTrips = () => {
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user.id);
+    console.log('sessionUser:       ' + sessionUser)
     // get info for logged in user
     const bookingsObj = useSelector(state => state.booking);
     const bookings = Object.values(bookingsObj);
@@ -47,9 +49,9 @@ export const BookedTrips = () => {
                 })
             })
         }
-
+ 
     const getBookedStays = () => {
-        dispatch(fetchBookings());
+        dispatch(fetchBookings(sessionUser));
         dispatch(getSpots());
         dispatch(findSpot(1));
     }
@@ -63,38 +65,49 @@ export const BookedTrips = () => {
     }
 
     const cancelBooking = (book) => {
-        dispatch(fetchDeleteBooking(book))
+        console.log("testing:           " + book.id)
+        dispatch(fetchDeleteBooking(book.id))
+
     }
 
     return (
         <>
             <h1>Trips</h1>
-            {validBookings.map(book => {
-                validBookings.forEach(book => {
-                    spots.forEach(spot => {
-                        if (book.spotsId === spot.id) {
-                            book.spotInfo = spot;
-                        }
-                    })
-                })
-                return (
-                    <div className="booking-card" key={book.id}>
-                        <img src={book.spotInfo.image1} alt='' />
-                        <h2>{book.spotInfo.title}</h2>
-                        <p>{book.startDate}</p>
-                        <p>{book.endDate}</p>
-                        <NavLink key={book.spotId} to={`/spots/${book.spotInfo.id}`} className='redirect-button'>
-                            <button>Take me there</button>
-                        </NavLink>
-                        <button className="cancel-button"
-                        onClick={() => cancelBooking(book)}
-                        >Cancel booking</button>
-                    </div>
-                )
-
-            })}
-
             {noTrips && (
+                <div>
+                    {validBookings.map(book => {
+                        validBookings.forEach(book => {
+                            spots.forEach(spot => {
+                                if (book.spotsId === spot.id) {
+                                    book.spotInfo = spot;
+                                }
+                            })
+                        })
+                        return (
+                            <div className="booking-card" key={book.id}>
+                                <img src={book?.spotInfo?.image1} alt='' />
+                                {/* <h1>{JSON.stringify(book.spotInfo.image1)}</h1> */}
+                                <h2>{book?.spotInfo?.title}</h2>
+                                <p>{book?.startDate}</p>
+                                <p>{book?.endDate}</p>
+                                <div className="buttons">
+                                    <NavLink key={book.spotId} to={`/spots/${book?.spotInfo?.id}`} className='redirect-button'>
+                                        <button>Take me there</button>
+                                    </NavLink>
+                                    <button className="cancel-button"
+                                    onClick={() => cancelBooking(book)}
+                                    >Cancel booking</button>
+                                </div>
+                            </div>
+                        )
+
+                    })}
+
+                </div>
+
+            )}
+
+            {!noTrips && (
                 <div>
                     <h2>No trips booked...yet!</h2>
                     <p>Time to dust off your bags and start planning your next adventure</p>

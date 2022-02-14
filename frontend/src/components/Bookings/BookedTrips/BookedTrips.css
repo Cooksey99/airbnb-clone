@@ -4,4 +4,20 @@
     text-align: center;
     /* background-color: coral; */
     width: 40em;
+    background: gray;
+    border-radius: 1em;
+    margin: 2em;
+    justify-content: center;
+    /* align-items: center; */
+}
+.booking-card img {
+    width: 20em;
+}
+.buttons {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}
+button {
+    width: 10em;
 }
