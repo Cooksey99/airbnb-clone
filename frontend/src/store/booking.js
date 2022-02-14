@@ -19,18 +19,19 @@ export const fetchDeleteBooking = (bookId) => async (dispatch) => {
 }
 
 const loadBookings = (bookings) => {
+    console.log('action creator:        ' + bookings)
     return {
         type: LOAD_BOOKINGS,
         payload: bookings
     }
 }
 export const fetchBookings = (userId) => async (dispatch) => {
-    console.log(userId)
+    // console.log(userId)
     const response = await csrfFetch(`/api/booking/${userId}`);
     const data = await response.json();
 
     dispatch(loadBookings(data));
-    // console.log(response)
+    // console.log('response:      ' + response)
     return response;
 }
 
