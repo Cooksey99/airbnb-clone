@@ -11,7 +11,7 @@ export const BookedTrips = () => {
     const bookingsObj = useSelector(state => state.booking);
     const bookings = Object.values(bookingsObj);
 
-    // const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user);
 
     const spotsObj = useSelector(state => state.spots);
     const spots = Object.values(spotsObj);
@@ -49,7 +49,7 @@ export const BookedTrips = () => {
         }
 
     const getBookedStays = () => {
-        dispatch(fetchBookings());
+        dispatch(fetchBookings(sessionUser.id));
         dispatch(getSpots());
         dispatch(findSpot(1));
     }
@@ -63,7 +63,8 @@ export const BookedTrips = () => {
     }
 
     const cancelBooking = (book) => {
-        dispatch(fetchDeleteBooking(book))
+        console.log(book)
+        dispatch(fetchDeleteBooking(book.id))
     }
 
     return (
@@ -79,16 +80,22 @@ export const BookedTrips = () => {
                 })
                 return (
                     <div className="booking-card" key={book.id}>
-                        <img src={book.spotInfo.image1} alt='' />
-                        <h2>{book.spotInfo.title}</h2>
-                        <p>{book.startDate}</p>
-                        <p>{book.endDate}</p>
-                        <NavLink key={book.spotId} to={`/spots/${book.spotInfo.id}`} className='redirect-button'>
-                            <button>Take me there</button>
-                        </NavLink>
-                        <button className="cancel-button"
-                        onClick={() => cancelBooking(book)}
-                        >Cancel booking</button>
+                      <div className="full-data">
+                        <div className="main-image">
+                                <img src={book.spotInfo.image1} alt='' />
+                                <h2>{book.spotInfo.title}</h2>
+                        </div>
+                            <p>{book.startDate}</p>
+                            <p>{book.endDate}</p>
+                      </div>
+                        <div className="div-buttons">
+                            <NavLink key={book.spotId} to={`/spots/${book.spotInfo.id}`} className='redirect-button'>
+                                <button>Take me there</button>
+                            </NavLink>
+                            <button className="cancel-button"
+                            onClick={() => cancelBooking(book)}
+                            >Cancel booking</button>
+                        </div>
                     </div>
                 )
 

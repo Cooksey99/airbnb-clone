@@ -61,7 +61,7 @@ export const SetBooking = () => {
                 >
                     <button
                     // onClick={() => handleSubmit()}
-                    >TEST</button>
+                    >Book</button>
 
                 </form>
             </>

@@ -41,8 +41,8 @@ export default function ListSpots() {
                             <p>{ `${pluralText(spot.roomCount, 'bed')}`}</p>
                             <p>{ `${pluralText(spot.bathCount, 'bath')}`}</p>
                         </ul>
+                        <p className='cost'>{`$${spot.nightlyCost} / night`}</p>
                     </div>
-            <p>{`$${spot.nightlyCost} / night`}</p>
             </NavLink>))}
         </section>
         </>
