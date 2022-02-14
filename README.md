@@ -4,7 +4,7 @@
 2. Install dependencies in root directory: npm install
 
 3. Create user with PASSWORD and CREATEDB in postgres
-    - CREATE USER <username> WITH PASSWORD <password>
+    - CREATE USER *username* WITH *password*
 
 4. Create .env file in directory. Copy the contents of env.example into the newly created .env file. Change the information to match that of which you created
 
@@ -18,7 +18,7 @@
     - npx dotenv sequelize db:migrate
     - npx dotenv sequelize db:seed:all
 
-7. In your terminal, nagivate to /backend. 
+7. In your terminal, nagivate to /backend.
     - Run: npm start
 
 8. In your terminal, navigate to /frontend
