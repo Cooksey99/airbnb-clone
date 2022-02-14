@@ -26,7 +26,7 @@ const loadBookings = (bookings) => {
     }
 }
 export const fetchBookings = (userId) => async (dispatch) => {
-    // console.log(userId)
+    console.log(userId)
     const response = await csrfFetch(`/api/booking/${userId}`);
     const data = await response.json();
 
@@ -60,9 +60,9 @@ export default function bookingsReducer(state = {}, action) {
 
     switch (action.type) {
         case LOAD_BOOKINGS:
-            // console.log('loading bookings')
             newState = {};
             action.payload.forEach(spot => newState[spot.id] = spot);
+            // console.log('loading bookings' + newState)
             // console.log('here is the state: ' + newState[1].startDate);
             return newState;
         case CREATE_BOOKING:
