@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { createListing } from "../../store/spot";
+import './CreateListing.css'
 // import axios from 'axios';
 
 export default function CreateListing() {
@@ -59,37 +60,47 @@ export default function CreateListing() {
 
     return (
         <>
+        <section id="full-form">
             <h1>Create a Listing</h1>
             <form
             id="create-listing"
             onSubmit={submitListing}>
-                <label>Title</label>
+                {/* <label>Title</label> */}
                 <input value={title}
+                placeholder='Enter title'
                 onChange={(e) => setTitle(e.target.value)}
                 required
                 ></input>
-                <label>Guest quantity</label>
-                <input value={guestCount}
-                onChange={(e) => setGuestCount(e.target.value)}
-                required
-                ></input>
-                <label>Size of spot</label>
-                <input value={staySize}
-                onChange={(e) => setStaySize(e.target.value)}
-                required
-                ></input>
-                <label>Number of rooms</label>
-                <input value={roomCount}
-                onChange={(e) => setRoomCount(e.target.value)}
-                required
-                ></input>
-                <label>Number of bathrooms</label>
-                <input value={bathCount}
-                onChange={(e) => setBathCount(e.target.value)}
-                required
-                ></input>
-                <label>Nightly cost</label>
+                <div className="specifics">
+                    {/* <label>Guest quantity</label> */}
+                    <input value={guestCount}
+                    placeholder='Guest quantity'
+                    onChange={(e) => setGuestCount(e.target.value)}
+                    required
+                    ></input>
+                    {/* <label>Size of spot</label> */}
+                    <input value={staySize}
+                    placeholder='Size of spot'
+                    onChange={(e) => setStaySize(e.target.value)}
+                    required
+                    ></input>
+                    {/* <label>Number of rooms</label> */}
+                    <input value={roomCount}
+                    placeholder='Number of rooms'
+                    onChange={(e) => setRoomCount(e.target.value)}
+                    required
+                    ></input>
+                    {/* <label>Number of bathrooms</label> */}
+                    <input value={bathCount}
+                    placeholder='Number of bathrooms'
+                    onChange={(e) => setBathCount(e.target.value)}
+                    required
+                    ></input>
+                </div>
+                {/* <label>Nightly cost</label> */}
                 <input value={nightlyCost}
+                className='nightly-cost'
+                placeholder='Nightly cost'
                 onChange={(e) => setNightlyCost(e.target.value)}
                 required
                 ></input>
@@ -102,7 +113,7 @@ export default function CreateListing() {
                 <input placeholder="URL goes here"
                 value={image2}
                 onChange={(e) => setImage2(e.target.value)}
-            
+
                 ></input>
                 <input placeholder="URL goes here"
                 value={image3}
@@ -140,8 +151,9 @@ export default function CreateListing() {
                 onChange={(e) => setDescription(e.target.value)}
                 required
                 ></textarea>
-                <button>Submit</button>
+                <button className="submit-form">Submit</button>
             </form>
+        </section>
         </>
     )
 }

@@ -1,3 +1,7 @@
+.all-content{
+    margin: 4em;
+}
+
 .booking-card {
     display: flex;
     flex-direction: column;

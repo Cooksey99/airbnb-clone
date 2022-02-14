@@ -12,6 +12,11 @@
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
+    color: white;
+}
+#noScroll-nav a {
+    color: white;
+    padding: 1em;
 }
 #left-nav {
     margin-left: 3em;
@@ -39,7 +44,7 @@
     border-radius: 2em;
     border: 1px black solid;
     background: grey;
-
+    /* color: black; */
 }
 #host-tab {
     margin: auto;
@@ -52,6 +57,24 @@
     right: 2em;
     border-radius: 1em;
     list-style: none;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    /* padding: 2em; */
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    overflow: hidden;
+}
+.profile-dropdown button {
+    all: unset;
+}
+.profile-dropdown button:hover, .profile-dropdown .profile-booking:hover {
+    background: rgb(221, 221, 221);
+    width: 100%;
+}
+button, .profile-booking, li {
+    padding: .5em 1.2em;
 }
 .search-background {
     background: black;

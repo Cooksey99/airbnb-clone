@@ -1,11 +1,13 @@
 // frontend/src/components/Navigation/ProfileButton.js
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -28,6 +30,8 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+
+    history.push('/login')
   };
 
   return (
@@ -40,7 +44,7 @@ function ProfileButton({ user }) {
       </button>
     {showMenu && (
       <div className="profile-dropdown">
-        <NavLink to={`/booking`} key={user.id}
+        <NavLink to={`/booking`} key={user.id} style={{color: 'black'}}
         className='profile-booking'
         >Trips</NavLink>
         <li>{user.username}</li>

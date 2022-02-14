@@ -1,0 +1,27 @@
+#sign-in-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    width: 40em;
+    margin: auto;
+    padding: 2em;
+    border-radius: 1em;
+    position: absolute;
+    top: 30%;
+    transform: translateY(-40%);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#sign-in-form button, #sign-in-form input {
+    height: 4em;
+    width: 26em;
+    border-radius: 1em;
+    border: 1px grey solid;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    text-align: center;
+    margin: auto;
+}
